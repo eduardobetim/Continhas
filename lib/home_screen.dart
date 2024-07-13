@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
-import 'package:gastinhos/add_category_screen.dart';
-import 'package:gastinhos/add_info_screen.dart';
+import 'package:gastinhos/category_type.dart';
+import 'package:gastinhos/expense_category.dart';
 import 'package:google_fonts/google_fonts.dart';
 
 class HomeScreen extends StatefulWidget {
@@ -11,6 +11,18 @@ class HomeScreen extends StatefulWidget {
 }
 
 class _HomeScreenState extends State<HomeScreen> {
+  List<ExpenseCategory> categories = [];
+
+  void addNewCategory() {
+    categories.add(
+      ExpenseCategory(
+        name: 'Nova Categoria',
+        type: CategoryType.other,
+        expenseList: [],
+      ),
+    );
+  }
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -22,9 +34,10 @@ class _HomeScreenState extends State<HomeScreen> {
         centerTitle: true,
         title: Text(
           'Continhas',
-          style: Theme.of(context).textTheme.headlineLarge!.copyWith(
-              fontFamily: GoogleFonts.dosis().fontFamily,
-              color: Theme.of(context).colorScheme.onPrimary),
+          style: Theme.of(context)
+              .textTheme
+              .headlineLarge!
+              .copyWith(fontFamily: GoogleFonts.dosis().fontFamily, color: Theme.of(context).colorScheme.onPrimary),
         ),
       ),
       body: Container(
@@ -66,19 +79,13 @@ class _HomeScreenState extends State<HomeScreen> {
                           ),
                           Text(
                             'Saldo',
-                            style: Theme.of(context)
-                                .textTheme
-                                .bodyLarge!
-                                .copyWith(color: Colors.black),
+                            style: Theme.of(context).textTheme.bodyLarge!.copyWith(color: Colors.black),
                           ),
                         ],
                       ),
                       Text(
                         '2000',
-                        style: Theme.of(context)
-                            .textTheme
-                            .bodyLarge!
-                            .copyWith(color: Colors.black),
+                        style: Theme.of(context).textTheme.bodyLarge!.copyWith(color: Colors.black),
                       ),
                     ],
                   ),
@@ -89,10 +96,7 @@ class _HomeScreenState extends State<HomeScreen> {
               ),
               Text(
                 'Resumo',
-                style: Theme.of(context)
-                    .textTheme
-                    .titleLarge!
-                    .copyWith(color: Colors.white),
+                style: Theme.of(context).textTheme.titleLarge!.copyWith(color: Colors.white),
               ),
               const SizedBox(
                 height: 8,
@@ -102,17 +106,11 @@ class _HomeScreenState extends State<HomeScreen> {
                 children: [
                   Text(
                     'Gasto:',
-                    style: Theme.of(context)
-                        .textTheme
-                        .bodyMedium!
-                        .copyWith(color: Colors.white),
+                    style: Theme.of(context).textTheme.bodyMedium!.copyWith(color: Colors.white),
                   ),
                   Text(
                     '1000',
-                    style: Theme.of(context)
-                        .textTheme
-                        .bodyMedium!
-                        .copyWith(color: Colors.white),
+                    style: Theme.of(context).textTheme.bodyMedium!.copyWith(color: Colors.white),
                   ),
                 ],
               ),
@@ -121,17 +119,11 @@ class _HomeScreenState extends State<HomeScreen> {
                 children: [
                   Text(
                     'Restante:',
-                    style: Theme.of(context)
-                        .textTheme
-                        .bodyMedium!
-                        .copyWith(color: Colors.white),
+                    style: Theme.of(context).textTheme.bodyMedium!.copyWith(color: Colors.white),
                   ),
                   Text(
                     '1000',
-                    style: Theme.of(context)
-                        .textTheme
-                        .bodyMedium!
-                        .copyWith(color: Colors.white),
+                    style: Theme.of(context).textTheme.bodyMedium!.copyWith(color: Colors.white),
                   ),
                 ],
               ),
@@ -146,30 +138,22 @@ class _HomeScreenState extends State<HomeScreen> {
                 mainAxisAlignment: MainAxisAlignment.spaceBetween,
                 crossAxisAlignment: CrossAxisAlignment.center,
                 children: [
-                  Wrap(
-                    direction: Axis.vertical,
-                    children: [
-                      Text(
-                        'Categorias',
-                        style: Theme.of(context)
-                            .textTheme
-                            .titleLarge!
-                            .copyWith(color: Colors.white),
-                      ),
-                      Text(
-                        'Nenhuma categoria encontrada.',
-                        style: Theme.of(context)
-                            .textTheme
-                            .bodyMedium!
-                            .copyWith(color: Colors.white),
-                      ),
-                    ],
+                  Text(
+                    'Categorias',
+                    style: Theme.of(context).textTheme.titleLarge!.copyWith(color: Colors.white),
                   ),
-                  IconButton(
-                    onPressed: () {},
-                    icon: Icon(
-                      Icons.add,
-                      color: Colors.white,
+                  Padding(
+                    padding: const EdgeInsets.only(top: 6),
+                    child: IconButton(
+                      onPressed: () {
+                        setState(() {
+                          addNewCategory();
+                        });
+                      },
+                      icon: const Icon(
+                        Icons.add,
+                        color: Colors.white,
+                      ),
                     ),
                   ),
                 ],
@@ -177,6 +161,27 @@ class _HomeScreenState extends State<HomeScreen> {
               const SizedBox(
                 height: 8,
               ),
+              if (categories.isEmpty)
+                Text(
+                  'Nenhuma categoria encontrada.',
+                  style: Theme.of(context).textTheme.bodyMedium!.copyWith(color: Colors.white),
+                )
+              else
+                Expanded(
+                  child: SingleChildScrollView(
+                    child: Column(
+                      children: categories
+                          .map<Widget>(
+                            (category) => Container(
+                              child: Text(
+                                category.name,
+                              ),
+                            ),
+                          )
+                          .toList(),
+                    ),
+                  ),
+                ),
             ],
           ),
         ),
