@@ -73,7 +73,10 @@ class _HomeScreenState extends State<HomeScreen> {
                     children: [
                       Wrap(
                         children: [
-                          const Icon(Icons.currency_exchange),
+                          const Icon(
+                            Icons.currency_exchange,
+                            color: Colors.black,
+                          ),
                           const SizedBox(
                             width: 8,
                           ),
@@ -199,7 +202,9 @@ class _HomeScreenState extends State<HomeScreen> {
                     child: Column(
                       children: categories
                           .map<Widget>(
-                            (category) => ExpansibleWidget(),
+                            (category) => ExpansibleWidget(
+                              category: category,
+                            ),
                           )
                           .toList(),
                     ),

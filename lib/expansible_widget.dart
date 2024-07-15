@@ -1,14 +1,33 @@
 import 'package:flutter/material.dart';
+import 'package:gastinhos/category_type.dart';
+import 'package:gastinhos/expense_category.dart';
 
 class ExpansibleWidget extends StatelessWidget {
-  const ExpansibleWidget({super.key});
+  const ExpansibleWidget({super.key, required this.category});
+
+  final ExpenseCategory category;
 
   @override
   Widget build(BuildContext context) {
-    return const Card(
+    return Card(
       child: ExpansionTile(
         title: Row(
-          children: [Text('Teste')],
+          children: [
+            Icon(
+              color: Colors.black,
+              categoryTypeIcons[category.type],
+            ),
+            const SizedBox(
+              width: 8,
+            ),
+            Text(
+              category.name,
+              style: Theme.of(context)
+                  .textTheme
+                  .bodyLarge!
+                  .copyWith(color: Colors.black),
+            ),
+          ],
         ),
         children: [
           Padding(
