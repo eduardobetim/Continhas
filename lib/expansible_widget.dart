@@ -11,10 +11,12 @@ class ExpansibleWidget extends StatelessWidget {
   Widget build(BuildContext context) {
     return Card(
       child: ExpansionTile(
+        tilePadding: const EdgeInsets.only(top: 2, bottom: 2,left: 16, right: 16,),
         title: Row(
+          mainAxisSize: MainAxisSize.max,
           children: [
             Icon(
-              color: Colors.black,
+              color: Colors.black87,
               categoryTypeIcons[category.type],
             ),
             const SizedBox(

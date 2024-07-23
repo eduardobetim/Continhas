@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:gastinhos/add_category_screen.dart';
 import 'package:gastinhos/category_type.dart';
 import 'package:gastinhos/expansible_widget.dart';
 import 'package:gastinhos/expense_category.dart';
@@ -15,13 +16,15 @@ class _HomeScreenState extends State<HomeScreen> {
   List<ExpenseCategory> categories = [];
 
   void addNewCategory() {
-    categories.add(
-      ExpenseCategory(
-        name: 'Nova Categoria',
-        type: CategoryType.other,
-        expenseList: [],
-      ),
-    );
+
+    Navigator.push(context, MaterialPageRoute(builder: (context) => AddCategoryScreen(),),);
+    // categories.add(
+    //   ExpenseCategory(
+    //     name: 'Nova Categoria',
+    //     type: CategoryType.other,
+    //     expenseList: [],
+    //   ),
+    // );
   }
 
   @override

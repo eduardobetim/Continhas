@@ -15,5 +15,5 @@ const categoryTypeIcons = {
   CategoryType.food: Icons.lunch_dining,
   CategoryType.house: Icons.house,
   CategoryType.clothes: Icons.checkroom,
-  CategoryType.other: Icons.pending,
+  CategoryType.other: Icons.new_label_outlined,
 };
