@@ -16,8 +16,12 @@ class _HomeScreenState extends State<HomeScreen> {
   List<ExpenseCategory> categories = [];
 
   void addNewCategory() {
-
-    Navigator.push(context, MaterialPageRoute(builder: (context) => AddCategoryScreen(),),);
+    Navigator.push(
+      context,
+      MaterialPageRoute(
+        builder: (context) => AddCategoryScreen(),
+      ),
+    );
     // categories.add(
     //   ExpenseCategory(
     //     name: 'Nova Categoria',

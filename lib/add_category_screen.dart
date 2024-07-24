@@ -16,10 +16,9 @@ class AddCategoryScreen extends StatelessWidget {
         centerTitle: true,
         title: Text(
           'Adicionar Categoria',
-          style: Theme.of(context)
-              .textTheme
-              .headlineLarge!
-              .copyWith(fontFamily: GoogleFonts.dosis().fontFamily, color: Theme.of(context).colorScheme.onPrimary),
+          style: Theme.of(context).textTheme.headlineLarge!.copyWith(
+              fontFamily: GoogleFonts.dosis().fontFamily,
+              color: Theme.of(context).colorScheme.onPrimary),
         ),
       ),
       body: Container(
@@ -44,8 +43,45 @@ class AddCategoryScreen extends StatelessWidget {
                 const SizedBox(
                   height: 64,
                 ),
-                InputField(name: 'Nome'),
-                InputField(name: 'Valor')
+                TextFormField(
+                  textAlign: TextAlign.start,
+                  style: Theme.of(context)
+                      .textTheme
+                      .bodyLarge!
+                      .copyWith(color: Colors.black),
+                  maxLength: 50,
+                  decoration: InputDecoration(
+                      filled: true,
+                      enabledBorder: const OutlineInputBorder(
+                        borderSide: BorderSide(
+                          color: Color.fromARGB(255, 99, 8, 102),
+                          width: 2,
+                        ),
+                        borderRadius: BorderRadius.all(
+                          Radius.circular(
+                            16,
+                          ),
+                        ),
+                      ),
+                      focusColor: Colors.white,
+                      focusedBorder: const OutlineInputBorder(
+                        borderSide: BorderSide(
+                          color: Color.fromARGB(255, 99, 8, 102),
+                          width: 2,
+                        ),
+                        borderRadius: BorderRadius.all(
+                          Radius.circular(
+                            16,
+                          ),
+                        ),
+                      ),
+                      labelText: 'Teste',
+                      floatingLabelBehavior: FloatingLabelBehavior.auto,
+                      labelStyle: Theme.of(context)
+                          .textTheme
+                          .labelLarge!
+                          .copyWith(color: Colors.black)),
+                ),
               ],
             ),
           ),
