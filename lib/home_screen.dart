@@ -1,6 +1,5 @@
 import 'package:flutter/material.dart';
 import 'package:gastinhos/add_category_screen.dart';
-import 'package:gastinhos/category_type.dart';
 import 'package:gastinhos/expansible_widget.dart';
 import 'package:gastinhos/expense_category.dart';
 import 'package:google_fonts/google_fonts.dart';

@@ -1,4 +1,7 @@
+import 'dart:ffi';
+
 import 'package:flutter/material.dart';
+import 'package:gastinhos/category_type.dart';
 import 'package:gastinhos/input_field.dart';
 import 'package:google_fonts/google_fonts.dart';
 
@@ -38,50 +41,59 @@ class AddCategoryScreen extends StatelessWidget {
           padding: const EdgeInsets.all(32),
           child: Form(
             child: Column(
+              crossAxisAlignment: CrossAxisAlignment.start,
               mainAxisAlignment: MainAxisAlignment.start,
               children: [
                 const SizedBox(
                   height: 64,
                 ),
                 TextFormField(
-                  textAlign: TextAlign.start,
+                  cursorColor: Colors.white,
+                  decoration: InputDecoration(
+                    label: Text(
+                      'Nome',
+                      style: Theme.of(context)
+                          .textTheme
+                          .labelLarge!
+                          .copyWith(color: Colors.white),
+                    ),
+                    focusedBorder: const UnderlineInputBorder(
+                      borderSide: BorderSide(color: Colors.white),
+                    ),
+                    enabledBorder: const UnderlineInputBorder(
+                      borderSide: BorderSide(color: Colors.white),
+                    ),
+                  ),
                   style: Theme.of(context)
                       .textTheme
                       .bodyLarge!
-                      .copyWith(color: Colors.black),
-                  maxLength: 50,
-                  decoration: InputDecoration(
-                      filled: true,
-                      enabledBorder: const OutlineInputBorder(
-                        borderSide: BorderSide(
-                          color: Color.fromARGB(255, 99, 8, 102),
-                          width: 2,
-                        ),
-                        borderRadius: BorderRadius.all(
-                          Radius.circular(
-                            16,
-                          ),
-                        ),
-                      ),
-                      focusColor: Colors.white,
-                      focusedBorder: const OutlineInputBorder(
-                        borderSide: BorderSide(
-                          color: Color.fromARGB(255, 99, 8, 102),
-                          width: 2,
-                        ),
-                        borderRadius: BorderRadius.all(
-                          Radius.circular(
-                            16,
-                          ),
-                        ),
-                      ),
-                      labelText: 'Teste',
-                      floatingLabelBehavior: FloatingLabelBehavior.auto,
-                      labelStyle: Theme.of(context)
-                          .textTheme
-                          .labelLarge!
-                          .copyWith(color: Colors.black)),
+                      .copyWith(color: Colors.white),
                 ),
+                const SizedBox(
+                  height: 8,
+                ),
+                DropdownButton(
+                    style: Theme.of(context).textTheme.bodyLarge,
+                    value:
+                        categoryTypeIcons.keys.toList().first.name.toString(),
+                    items: [
+                      for (final category in categoryTypeIcons.entries)
+                        DropdownMenuItem(
+                          value: category.key.name.toString(),
+                          child: Row(
+                            children: [
+                              Icon(category.value),
+                              const SizedBox(
+                                width: 8,
+                              ),
+                              Text(
+                                category.key.name.toString(),
+                              ),
+                            ],
+                          ),
+                        )
+                    ],
+                    onChanged: (value) {})
               ],
             ),
           ),
