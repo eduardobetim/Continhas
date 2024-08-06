@@ -5,8 +5,15 @@ import 'package:gastinhos/category_type.dart';
 import 'package:gastinhos/input_field.dart';
 import 'package:google_fonts/google_fonts.dart';
 
-class AddCategoryScreen extends StatelessWidget {
+class AddCategoryScreen extends StatefulWidget {
   const AddCategoryScreen({super.key});
+
+  @override
+  State<AddCategoryScreen> createState() => _AddCategoryScreenState();
+}
+
+class _AddCategoryScreenState extends State<AddCategoryScreen> {
+  String dropdownValue = categoryTypeIcons.keys.toList().first.name.toString();
 
   @override
   Widget build(BuildContext context) {
@@ -73,16 +80,22 @@ class AddCategoryScreen extends StatelessWidget {
                   height: 8,
                 ),
                 DropdownButton(
-                    style: Theme.of(context).textTheme.bodyLarge,
-                    value:
-                        categoryTypeIcons.keys.toList().first.name.toString(),
+                    dropdownColor: Colors.black87,
+                    style: Theme.of(context)
+                        .textTheme
+                        .bodyLarge!
+                        .copyWith(color: Colors.white),
+                    value: dropdownValue,
                     items: [
                       for (final category in categoryTypeIcons.entries)
                         DropdownMenuItem(
                           value: category.key.name.toString(),
                           child: Row(
                             children: [
-                              Icon(category.value),
+                              Icon(
+                                category.value,
+                                color: Colors.white,
+                              ),
                               const SizedBox(
                                 width: 8,
                               ),
@@ -93,7 +106,11 @@ class AddCategoryScreen extends StatelessWidget {
                           ),
                         )
                     ],
-                    onChanged: (value) {})
+                    onChanged: (value) {
+                      setState(() {
+                        dropdownValue = value!;
+                      });
+                    })
               ],
             ),
           ),
