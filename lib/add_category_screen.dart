@@ -1,8 +1,6 @@
-import 'dart:ffi';
-
 import 'package:flutter/material.dart';
-import 'package:gastinhos/category_type.dart';
-import 'package:gastinhos/input_field.dart';
+import 'package:gastinhos/expense_categories.dart';
+import 'package:gastinhos/expense_category.dart';
 import 'package:google_fonts/google_fonts.dart';
 
 class AddCategoryScreen extends StatefulWidget {
@@ -13,7 +11,7 @@ class AddCategoryScreen extends StatefulWidget {
 }
 
 class _AddCategoryScreenState extends State<AddCategoryScreen> {
-  String dropdownValue = categoryTypeIcons.keys.toList().first.name.toString();
+  ExpenseCategory dropdownValue = expenseCategories.entries.first.value;
 
   @override
   Widget build(BuildContext context) {
@@ -26,9 +24,10 @@ class _AddCategoryScreenState extends State<AddCategoryScreen> {
         centerTitle: true,
         title: Text(
           'Adicionar Categoria',
-          style: Theme.of(context).textTheme.headlineLarge!.copyWith(
-              fontFamily: GoogleFonts.dosis().fontFamily,
-              color: Theme.of(context).colorScheme.onPrimary),
+          style: Theme.of(context)
+              .textTheme
+              .headlineLarge!
+              .copyWith(fontFamily: GoogleFonts.dosis().fontFamily, color: Theme.of(context).colorScheme.onPrimary),
         ),
       ),
       body: Container(
@@ -59,10 +58,7 @@ class _AddCategoryScreenState extends State<AddCategoryScreen> {
                   decoration: InputDecoration(
                     label: Text(
                       'Nome',
-                      style: Theme.of(context)
-                          .textTheme
-                          .labelLarge!
-                          .copyWith(color: Colors.white),
+                      style: Theme.of(context).textTheme.labelLarge!.copyWith(color: Colors.white),
                     ),
                     focusedBorder: const UnderlineInputBorder(
                       borderSide: BorderSide(color: Colors.white),
@@ -71,36 +67,30 @@ class _AddCategoryScreenState extends State<AddCategoryScreen> {
                       borderSide: BorderSide(color: Colors.white),
                     ),
                   ),
-                  style: Theme.of(context)
-                      .textTheme
-                      .bodyLarge!
-                      .copyWith(color: Colors.white),
+                  style: Theme.of(context).textTheme.bodyLarge!.copyWith(color: Colors.white),
                 ),
                 const SizedBox(
                   height: 8,
                 ),
                 DropdownButton(
-                    dropdownColor: Colors.black87,
-                    style: Theme.of(context)
-                        .textTheme
-                        .bodyLarge!
-                        .copyWith(color: Colors.white),
                     value: dropdownValue,
+                    dropdownColor: Colors.black87,
+                    style: Theme.of(context).textTheme.bodyLarge!.copyWith(color: Colors.white),
                     items: [
-                      for (final category in categoryTypeIcons.entries)
+                      for (final category in expenseCategories.entries)
                         DropdownMenuItem(
-                          value: category.key.name.toString(),
+                          value: category.value,
                           child: Row(
                             children: [
                               Icon(
-                                category.value,
+                                category.value.icon,
                                 color: Colors.white,
                               ),
                               const SizedBox(
                                 width: 8,
                               ),
                               Text(
-                                category.key.name.toString(),
+                                category.value.name,
                               ),
                             ],
                           ),

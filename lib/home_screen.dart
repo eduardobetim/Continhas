@@ -41,9 +41,10 @@ class _HomeScreenState extends State<HomeScreen> {
         centerTitle: true,
         title: Text(
           'Continhas',
-          style: Theme.of(context).textTheme.headlineLarge!.copyWith(
-              fontFamily: GoogleFonts.dosis().fontFamily,
-              color: Theme.of(context).colorScheme.onPrimary),
+          style: Theme.of(context)
+              .textTheme
+              .headlineLarge!
+              .copyWith(fontFamily: GoogleFonts.dosis().fontFamily, color: Theme.of(context).colorScheme.onPrimary),
         ),
       ),
       body: Container(
@@ -88,19 +89,13 @@ class _HomeScreenState extends State<HomeScreen> {
                           ),
                           Text(
                             'Saldo',
-                            style: Theme.of(context)
-                                .textTheme
-                                .bodyLarge!
-                                .copyWith(color: Colors.black),
+                            style: Theme.of(context).textTheme.bodyLarge!.copyWith(color: Colors.black),
                           ),
                         ],
                       ),
                       Text(
                         '2000',
-                        style: Theme.of(context)
-                            .textTheme
-                            .bodyLarge!
-                            .copyWith(color: Colors.black),
+                        style: Theme.of(context).textTheme.bodyLarge!.copyWith(color: Colors.black),
                       ),
                     ],
                   ),
@@ -111,10 +106,7 @@ class _HomeScreenState extends State<HomeScreen> {
               ),
               Text(
                 'Resumo',
-                style: Theme.of(context)
-                    .textTheme
-                    .titleLarge!
-                    .copyWith(color: Colors.white),
+                style: Theme.of(context).textTheme.titleLarge!.copyWith(color: Colors.white),
               ),
               const SizedBox(
                 height: 8,
@@ -124,17 +116,11 @@ class _HomeScreenState extends State<HomeScreen> {
                 children: [
                   Text(
                     'Gasto:',
-                    style: Theme.of(context)
-                        .textTheme
-                        .bodyMedium!
-                        .copyWith(color: Colors.white),
+                    style: Theme.of(context).textTheme.bodyMedium!.copyWith(color: Colors.white),
                   ),
                   Text(
                     '1000',
-                    style: Theme.of(context)
-                        .textTheme
-                        .bodyMedium!
-                        .copyWith(color: Colors.white),
+                    style: Theme.of(context).textTheme.bodyMedium!.copyWith(color: Colors.white),
                   ),
                 ],
               ),
@@ -143,17 +129,11 @@ class _HomeScreenState extends State<HomeScreen> {
                 children: [
                   Text(
                     'Restante:',
-                    style: Theme.of(context)
-                        .textTheme
-                        .bodyMedium!
-                        .copyWith(color: Colors.white),
+                    style: Theme.of(context).textTheme.bodyMedium!.copyWith(color: Colors.white),
                   ),
                   Text(
                     '1000',
-                    style: Theme.of(context)
-                        .textTheme
-                        .bodyMedium!
-                        .copyWith(color: Colors.white),
+                    style: Theme.of(context).textTheme.bodyMedium!.copyWith(color: Colors.white),
                   ),
                 ],
               ),
@@ -170,10 +150,7 @@ class _HomeScreenState extends State<HomeScreen> {
                 children: [
                   Text(
                     'Categorias',
-                    style: Theme.of(context)
-                        .textTheme
-                        .titleLarge!
-                        .copyWith(color: Colors.white),
+                    style: Theme.of(context).textTheme.titleLarge!.copyWith(color: Colors.white),
                   ),
                   Padding(
                     padding: const EdgeInsets.only(top: 6),
@@ -197,10 +174,7 @@ class _HomeScreenState extends State<HomeScreen> {
               if (categories.isEmpty)
                 Text(
                   'Nenhuma categoria encontrada.',
-                  style: Theme.of(context)
-                      .textTheme
-                      .bodyMedium!
-                      .copyWith(color: Colors.white),
+                  style: Theme.of(context).textTheme.bodyMedium!.copyWith(color: Colors.white),
                 )
               else
                 Expanded(

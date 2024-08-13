@@ -1,5 +1,4 @@
 import 'package:flutter/material.dart';
-import 'package:gastinhos/category_type.dart';
 import 'package:gastinhos/expense_category.dart';
 
 class ExpansibleWidget extends StatelessWidget {
@@ -11,27 +10,29 @@ class ExpansibleWidget extends StatelessWidget {
   Widget build(BuildContext context) {
     return Card(
       child: ExpansionTile(
-        tilePadding: const EdgeInsets.only(top: 2, bottom: 2,left: 16, right: 16,),
+        tilePadding: const EdgeInsets.only(
+          top: 2,
+          bottom: 2,
+          left: 16,
+          right: 16,
+        ),
         title: Row(
           mainAxisSize: MainAxisSize.max,
           children: [
             Icon(
               color: Colors.black87,
-              categoryTypeIcons[category.type],
+              category.icon,
             ),
             const SizedBox(
               width: 8,
             ),
             Text(
               category.name,
-              style: Theme.of(context)
-                  .textTheme
-                  .bodyLarge!
-                  .copyWith(color: Colors.black),
+              style: Theme.of(context).textTheme.bodyLarge!.copyWith(color: Colors.black),
             ),
           ],
         ),
-        children: [
+        children: const [
           Padding(
             padding: EdgeInsets.all(8),
             child: Row(

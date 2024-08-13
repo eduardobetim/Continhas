@@ -1,10 +1,20 @@
+import 'package:flutter/material.dart';
+import 'package:flutter/widgets.dart';
 import 'package:gastinhos/Expense.dart';
-import 'package:gastinhos/category_type.dart';
 
 class ExpenseCategory {
   String name;
-  CategoryType type;
+  IconData icon;
   List<Expense> expenseList;
 
-  ExpenseCategory({required this.name, required this.type, required this.expenseList});
+  ExpenseCategory({required this.name, required this.icon, required this.expenseList});
+}
+
+enum ExpenseCategoryType {
+  shopping,
+  leisure,
+  food,
+  house,
+  clothes,
+  other,
 }
